@@ -112,7 +112,7 @@ function renderLast(cityOnload) {
     if (!cityOnload) {
         return
     }else {
-        
+        getWeatherDetails(cityOnload, true);
     }
 }
 
