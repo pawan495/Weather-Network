@@ -19,6 +19,68 @@ $("#saved-cities").on("click", function (e) {
     console.log(saveCity);
 });
 
+function  getWeatherDetails(city, addButton){
+    const apikey="e5484895a48f875416fd40b699c60fe2";
+    const query=`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apikey}`;
 
-// calling function to render the last searched city
-renderLast();
+    // Create an  AJAX call to retrieve  data
+    $.ajax({
+        method: "GET",
+        url: query,
+    }).then(function (weather) {
+
+        console.log(weather);
+        var lat = weather.city.coord.lat;
+        var lon = weather.city.coord.lon;
+
+        $("#five-day").text("");
+        for (let i = 5; i < 40; i += 8) {
+            // grabbing the date from ajax response
+            var dateText = weather.list[i].dt_txt;
+            // splitting date and time values
+            var shortDate = dateText.split(" ");
+            // setting variable to date text only
+            var date = shortDate[0];
+            // variable to grab icon for weather
+            var iconFC = weather.list[i].weather[0].icon;
+            // variable for temp
+            var cardTemp = Math.round(kelvinToF(weather.list[i].main.temp));
+            // variable for humidity
+            var cardHum = weather.list[i].main.humidity;
+
+            cardForecast(date, iconFC, cardTemp, cardHum);
+        }
+        if (addButton) {
+            searchHistory(weather.city.name);
+        }
+        $("#current-city").text("");
+        $("#current-city").append(
+            $("<h2>").text("City: " + weather.city.name),
+
+            $("<p>").text("Wind: " + weather.list[0].wind.speed),
+
+            $("<p>").text("Humidity: " + weather.list[0].main.humidity + "%"),
+
+            $("<p>").text("Temp(F): " + Math.round(kelvinToF(weather.list[0].main.temp))),
+        );
+
+        // second api call for 5 day weather forecast
+        const apikey = "e5484895a48f875416fd40b699c60fe2";
+        const queryTwo = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${apikey}`;
+
+        $.ajax({
+            method: "GET",
+            url: queryTwo,
+        }).then(function (uvIndex) {
+            $("#current-city").append(
+                $("<p>").text("UV Index: " + uvIndex.current.uvi).attr("id", "ultra-violet"))
+                if (uvIndex.current.uvi <= 2){
+                    $("#ultra-violet").attr("class", "good")
+                }else if (uvIndex.current.uvi <= 5){
+                    $("#ultra-violet").attr("class", "moderate")
+                }else if (uvIndex.current.uvi > 5){
+                    $("#ultra-violet").attr("class", "severe")
+                };
+        });
+    });
+}
