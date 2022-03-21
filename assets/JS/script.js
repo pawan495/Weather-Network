@@ -84,3 +84,17 @@ function  getWeatherDetails(city, addButton){
         });
     });
 }
+function kelvinToF(k) {
+    return ((k - 273.15) * 1.8 + 32).toFixed(2);
+}
+
+function cardForecast(date, iconFC, cardTemp, cardHum) {
+    $("#five-day").append(
+        $("<div>").attr("class", "card col")
+            .append(
+                $("<h6>").text(date),
+                $("<img>").attr("src", "http://openweathermap.org/img/wn/" + iconFC + "@2x.png"),
+                $("<p>").text("Temp (F): " + cardTemp),
+                $("<p>").text("Humidity: " + cardHum)));
+
+}
