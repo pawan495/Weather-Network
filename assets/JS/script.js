@@ -98,3 +98,23 @@ function cardForecast(date, iconFC, cardTemp, cardHum) {
                 $("<p>").text("Humidity: " + cardHum)));
 
 }
+function searchHistory(cityName) {
+
+    $("#saved-cities").append(
+        $("<button>").text(cityName)
+            .attr("class", "btnCity btn-block col btn-outline-info")
+            .attr("id", cityName)
+            .text(cityName)
+    );
+}
+function renderLast(cityOnload) {
+    var cityOnload = localStorage.getItem("cityStored");
+    if (!cityOnload) {
+        return
+    }else {
+        
+    }
+}
+
+// calling function to render the last searched city
+renderLast();
