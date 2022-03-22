@@ -24,7 +24,6 @@ When the user enters the city name  in the input box and press search button, â€
 [Weather-Network](https://pawan495.github.io/Weather-Network/)
 # Screen Shot
 
-![Screenshotpreview](./assets/images/pic1.png)
 ![Screenshotpreview](./assets/images/pic2.png)
 # Bonus ğŸ†
 University of Toronto BootCamp: course material, Instructor, W3Schools and google(https://www.google.com)
