@@ -1,21 +1,77 @@
-*{
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
-.body{
-    font-size: 16px;
-    font-family: fantasy;
-}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+    font-family: Anton;
+  }
+  header {
+    background-color: lightseagreen;
+    height: 125px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    padding-top: 35px;
+    color: white;
+    font-size: 48px;
+    height: auto;
+  }
+  .main-container {
+    margin: 0 auto;
+  }
+  #search-block {
+    border: 2px solid lightgrey;
+  }
+  /* this is all the styles for the label/search bar/and button */
+  #label {
+    display: block;
+  }
+  #search-input {
+    display: inline-block;
+  }
+  #current-city{
+    height: 350px;
+    /* border: 2px solid lightgrey;
+    border-radius: 2px; */
+    margin-bottom: 20px;
+    font-size: larger;
 
-h3{
-    font-weight: 900;
+  }
+.forecast-title{
+  text-align: center;
+  width: 100;
+  background-color: lightseagreen;
 }
-
-.forecast{
-    font-size: 0.9em;
+.forecast {
+  width: 100%;
+  border: 2px solid lightgrey;
+  border-radius: 2px;
 }
-
-span{
-    font-size: 1em;
-
-}
+  #five-day {
+    height: auto;
+  }
+  .card {
+    display: inline-block;
+    width: fit-content;
+    text-align: center;
+    background-color: lightblue;
+    margin: 3px;
+  }
+  .good {
+    background-color: rgb(113, 167, 33);
+    width: fit-content;
+  }
+  .moderate {
+    background-color: orange;
+    width: fit-content;
+  }
+  .severe {
+    background-color: red;
+    width: fit-content;
+  }
+  .btnCity {
+    background-color: rgb(209, 203, 203);
+    margin-top: 10px;
+  }
