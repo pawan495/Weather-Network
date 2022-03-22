@@ -2,7 +2,7 @@
 // Event listener for search button
 $(".btn").on("click", function (e){
     e.preventDefault();
-    var city =$("#search-input").val();
+    var city =$("#search-city").val();
     cityOnload = localStorage.setItem("cityStored", city);
     if(city ===""){
         return
